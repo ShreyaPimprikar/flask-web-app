@@ -1,0 +1,122 @@
+*{
+    margin: 0; padding:0; box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+   
+    
+}
+.site-header {
+    width: 100%;
+    height: 100vmax;
+    background: #0f8a9d;
+    background: linear-gradient(57deg, #00C6A7 , #1E4D92 ); 
+    /* clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 0% 100%); */
+
+}
+nav{
+    width: 100%; height: 100px;
+    background-color: black;
+    display:flex; color:white;
+    
+}
+.logo{
+    width: 50%;
+    height: 100px;
+}
+.logo h1{
+    line-height: 100px;
+    padding-left: 50px;
+}
+.menu{
+    width: 70%; height: 100px;
+}
+.menu ul{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items:  center;
+}
+.menu ul li{
+    list-style: none;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.menu li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 20px;
+    font-family: poppins;
+    font-size: 16px;
+    text-transform: uppercase;
+    }
+    .menu li a:hover{
+        background: #fff;
+        color: #333;
+    }
+
+/*body{
+    padding: 0 10px;
+}*/
+.wrapper{
+    max-width:500px;
+    widows: 100%;
+    background: #fff;
+    margin:20px auto;
+    padding:30px;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.125)
+}
+.wrapper .title{
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: black;
+    text-transform: uppercase;
+    text-align: center;
+}
+.wrapper .form{
+    width:100%;
+}
+.wrapper .form .input_field{
+    margin-bottom: 15px;
+    display:flex;
+    align-items: center;
+}
+.wrapper .form .input_field label{
+    width:200px;
+    color:#757575;
+    margin-right: 10px;
+    font-size :14px
+}
+.wrapper .form .input_field .input{
+    width:100%;
+    outline:none;
+    border: 1px solid #d5dbd9;
+    font-size: 15px;
+    padding: 5px 5px;
+     border-radius: 3px; 
+     transition: all 0.3s ease; 
+}
+.wrapper .form .input_field .input:focus ,.wrapper .form .input_field .textarea:focus
+{
+    border:1px solid black;
+}
+
+.wrapper .form .input_field .btn{
+    width:100%;
+    padding: 8px 10px;
+    font-size: 15px;
+    border: 0;
+    background: #0f8a9d;
+    color:#fff;
+    cursor:pointer;
+    border-radius: 3px;
+    outline:none;
+}
+.wrapper .form .input_field:last-child{
+    margin-bottom:0;
+}
+.wrapper .form .input_field .btn:hover{
+    background:#d5dbd9;
+}

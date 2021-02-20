@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Result</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+
+
+    <link rel="stylesheet" type="text/css" href="/static/reg.css">
+    <style>
+        th {
+        background-color:indigo;
+        color: white;
+            }
+    
+    </style>
+</head>
+<body>
+    
+        <header class="site-header clearfix" >
+                <nav>
+                 <div class="logo">
+                  <h1>Parentor</h1>
+                 </div>
+                 <div class="menu"> 
+                  <ul>
+                       <li><a href="/profile">Student Profile</a></li>
+                       <li><a href="/exams">Exams</a></li>
+                       <li><a href="/view_activity">Activities</a></li>
+                       <li><a href="/logout">Logout</a></li>
+                  </ul>
+                 </div>
+                </nav>
+                <br>
+       
+
+        {% with messages = get_flashed_messages(with_categories=true) %}  
+                {% if messages %}  
+                    {% for category, message in messages %}  
+                        <p class="alert alert-{{ category }}">{{ message }}</p>  
+                    {% endfor %}  
+                {% endif %}  
+            {% endwith %}  
+
+        
+        <center><h1 style="color: yellow;"><b>{{exam.e_name}}</b></h1></center><br>
+
+        <p><b style="white-space: nowrap; font-size: large;">Reg ID: &nbsp;&nbsp;&nbsp;&nbsp;{{student.reg_id}}</b></p>
+        <p><b style="white-space: nowrap; font-size: large;">Student Name:&nbsp;&nbsp;&nbsp;&nbsp;{{student.name}} </b></p>
+        <p><b style="white-space: nowrap; font-size: large;">Class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{student.class_name}} </b></p>
+        <br>
+
+
+
+
+        <table style="background-color: white;" class="table table-striped">
+            <tr>
+                <th>Subject ID</th>
+                <th>Subject Name</th>
+                <th>Marks</th>
+                <th>Grade</th>
+                <th>Total Marks</th>
+                <th>Remark</th>
+            </tr>
+            {% for mark in marks %}
+            <tr>
+                <td>{{mark.sub_id}}</td>
+                <td>{{mark.sub_name}}</td>
+                <td>{{mark.marks}}</td>
+                <td>{{mark.grade}}</td>
+                <td>{{exam.tot_marks}}</td>
+                <td>{{mark.remark}}</td>
+                
+            </tr>
+            {% endfor %}
+        </table>
+    <p><b style="font-size: large;">Total Marks:  &nbsp;&nbsp;&nbsp;&nbsp;{{result.omarks}}/{{result.fmarks}}</b></p>
+    <p><b style="font-size: large;">Grade:  &nbsp;&nbsp;&nbsp;&nbsp;{{result.fgrade}}</b></p><br><br><br><br>
+
+    <center>
+        <h1><b style="color: yellow;">Progress Chart</b></h1>
+      </center>
+      <center style="background-color:peachpuff">
+        <canvas id="chart" width="600" height="400"></canvas>
+        <script>
+          // bar chart data
+          var barData = {
+            labels : [
+              {% for item in marks %}
+               "{{ item.sub_name }}",
+              {% endfor %}
+        ],
+    
+            datasets : [{
+              fillColor: "rgba(151,187,205,0.2)",
+              strokeColor: "rgba(151,187,205,1)",
+              pointColor: "rgba(151,187,205,1)",
+              data : [
+                {% for item in marks %}
+                   "{{ item.marks }}",
+                  {% endfor %}
+            ]
+              }
+            ]
+          }
+    
+         // get bar chart canvas
+         var mychart = document.getElementById("chart").getContext("2d");
+    
+           steps = 5
+           max = {{exam.tot_marks}}
+    
+         // draw bar chart
+         new Chart(mychart).Bar(barData, {
+           scaleOverride: true,
+           scaleSteps: steps,
+           scaleStepWidth: Math.ceil(max / steps),
+           scaleStartValue: 0,
+           scaleShowVerticalLines: true,
+           scaleShowGridLines : true,
+           barShowStroke : true,
+           scaleShowLabels: true
+           }
+         );
+    
+        </script>
+      </center>
+       
+</body>
+</html>

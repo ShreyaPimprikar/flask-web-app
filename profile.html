@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+ <link rel="stylesheet" type="text/css" href="static/profile.css"> 
+</head>
+<body>
+    
+         <header class="site-header clearfix" style="background-image: url(static/student_profile2.jpg)">
+                <nav>
+                 <div class="logo">
+                  <h1>Parentor</h1>
+                 </div>
+                 <div class="menu"> 
+                  <ul>
+                    <li><a href="/exams">Exams</a></li>
+                    <li><a href="/subjects">Subjects</a></li>
+                    <li><a href="/view_activity">Activities</a></li>
+                    <li><a href="/about_us">About us</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                       
+                  </ul>
+                 </div>
+                </nav> 
+
+                {% with messages = get_flashed_messages(with_categories=true) %}  
+                  {% if messages %}  
+                    {% for category, message in messages %}  
+                        <p class="alert alert-{{ category }}">{{ message }}</p>  
+                    {% endfor %}  
+                  {% endif %}  
+                {% endwith %} 
+
+                <div class="wrapper" style="background-color: indigo;">
+                    
+                    <div class="form">
+                        <div class="output_field">
+                            <label style="font-size :18px">Reg. No :</label>
+                              <output style="color:yellow" type="text" class="output"> {{data.reg_id}}
+                            </div>
+                
+                            <div class="output_field">
+                                <label  style="font-size :18px" >Student Name :</label>
+                                  <output style="color:yellow" type="text"  class="output"> {{data.name}}
+                                </div>
+                                
+                            <div class="output_field">
+                                <label  style="font-size :18px">Class :</label>
+                                  <output style="color:yellow" type="text" class="output"> {{data.class_name}}
+                                </div>
+                            <div class="output_field">
+                                <label  style="font-size :18px">Teacher name :</label>
+                                  <output style="color: yellow" type="text"  class="output"> {{data.t_name}}
+                                </div> 
+                             
+                
+                            </div>
+                            </div>
+                            </header>
+                
+            
+            </body>
+            </html>  
+            

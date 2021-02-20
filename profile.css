@@ -1,0 +1,102 @@
+*{
+    margin: 0; padding:0; box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    
+    
+  }
+  .site-header {
+    width: 100%;
+    height: 100vh;
+    background-image: url("student_profile2.jpg");
+     background-repeat: no-repeat; 
+     -webkit-background-size: cover; 
+     -moz-background-size: cover;
+    -o-background-size: cover; 
+    background-size: 100% 100%; 
+    
+  
+  }
+  nav{
+    width: 100%; height: 100px;
+    background-color: black;
+    display:flex; color:white;
+    
+  }
+  .logo{
+    width: 50%;
+    height: 100px;
+  }
+  .logo h1{
+    line-height: 100px;
+    padding-left: 50px;
+  }
+  .menu{
+    width: 70%; height: 100px;
+  }
+  .menu ul{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items:  center;
+  }
+  .menu ul li{
+    list-style: none;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .menu li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 20px;
+    font-family: poppins;
+    font-size: 16px;
+    text-transform: uppercase;
+    }
+    .menu li a:hover{
+        background: #fff;
+        color: #333;
+    }
+.wrapper{
+        max-width:500px;
+        /* height: 375px; */
+        widows: 100%;
+        border-radius: 80px; 
+        border: 8px solid #000000;
+        background:#911ad6;
+        margin:110px auto; 
+         opacity: 0.7; 
+        padding:50px;
+        box-shadow: 1px 1px 2px rgba(0,0,0,0.125)
+        
+      }
+      
+      
+      .wrapper .form{
+        width:100%;
+        
+      }
+      .wrapper .form .output_field{
+        margin-bottom: 15px;
+        display:flex;
+        align-items: center;
+      }
+      .wrapper .form .output_field label{
+        width:200px;
+        font-family: "Times New Roman", Times, serif;
+        color:#eff30b;
+        margin-right: 0px;
+       
+        font-size :18px
+      }
+      .wrapper .form .output_field .output{
+        width:100%;
+        outline:none;
+        border: 3px solid #eff30b;
+        font-size: 15px;
+        padding: 10px 10px;
+         border-radius: 13px; 
+         transition: all 0.3s ease;  
+      }

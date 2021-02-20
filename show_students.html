@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Manage Students</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="/static/reg.css">
+    <style>
+        th {
+        background-color:indigo;
+        color: white;
+            }
+    
+    </style>
+</head>
+<body class="site-header">
+       
+       
+                <nav>
+                 <div class="logo">
+                  <h1>Parentor</h1>
+                 </div>
+                 <div class="menu"> 
+                  <ul>
+                       
+                       <li><a href="/add_student">Add Student</a></li>
+                       <li><a href="/add_activities">Add Activities</a></li>
+                       <li><a href="/manage_exams">Manage exams</a></li>
+                       <li><a href="/logout">Logout</a></li>
+                  </ul>
+                 </div>
+                </nav>
+                <br>
+
+        <a class="btn btn-success" href="/add_student">Add Student</a>
+        <hr>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}  
+                {% if messages %}  
+                    {% for category, message in messages %}  
+                        <p class="alert alert-{{ category }}">{{ message }}</p>  
+                    {% endfor %}  
+                {% endif %}  
+            {% endwith %}  
+
+        
+        {% if students %}
+        <table style="background-color: white;" class="table table-striped">
+            <tr>
+                <th>Reg ID</th>
+                <th>Roll No</th>
+                <th>Name</th>
+                <th>Date of Birth</th>
+                <th>Address</th>
+                <th></th>
+                <th></th>
+            </tr>
+            {% for student in students %}
+            <tr>
+                <td>{{student.reg_id}}</td>
+                <td>{{student.roll_no}}</td>
+                <td>{{student.name}}</td>
+                <td>{{student.dob}}</td>
+                <td>{{student.address}}</td>
+                <td><a href="/edit_student/{{student.reg_id}}" class="btn btn-primary">Edit</a></td>
+                <td><a href="/delete_student/{{student.reg_id}}" class="btn btn-danger">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <div class="alert alert-info">
+            <strong><h3>No students added yet.</strong> Add students first.</h3>
+        </div>
+        {% endif %}
+        
+</body>
+</html>

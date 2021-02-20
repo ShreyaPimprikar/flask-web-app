@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Students</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="/static/reg.css">
+    <style>
+        th {
+        background-color:indigo;
+        color: white;
+            }
+    
+    </style>
+</head>
+<body>
+    
+        <header class="site-header clearfix">
+                <nav>
+                 <div class="logo">
+                  <h1>Parentor</h1>
+                 </div>
+                 <div class="menu"> 
+                  <ul>
+                       <li><a href="/manage_exams">Manage Exams</a></li>
+                       <li><a href="/show_marks/{{eid}}/{{c1}}/{{c2}}">Show Marks</a></li>
+                       <li><a href="/logout">Logout</a></li>
+                  </ul>
+                 </div>
+                </nav>
+                <br>
+
+       
+        
+
+        {% with messages = get_flashed_messages(with_categories=true) %}  
+                {% if messages %}  
+                    {% for category, message in messages %}  
+                        <p class="alert alert-{{ category }}">{{ message }}</p>  
+                    {% endfor %}  
+                {% endif %}  
+            {% endwith %}  
+
+        
+        <center><h1 style="color:yellow"><b>EXAMWISE MARKS ENTRY</b></h1></center><br>
+        <p><b><h4>Subejct Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{subject.sub_name}}</h4></b></p>
+        <table style="background-color: white;" class="table table-striped">
+            <tr>
+                <th>Reg ID</th>
+                <th>Roll No</th>
+                <th>Name</th>
+                <th></th>
+            </tr>
+            {% for student in students %}
+            <tr>
+                <td>{{student.reg_id}}</td>
+                <td>{{student.roll_no}}</td>
+                <td>{{student.name}}</td>
+                <td><a href="/add_marks/{{student.reg_id}}/{{eid}}/{{c1}}/{{c2}}" class="btn btn-success">Add Marks</a></td>
+                
+            </tr>
+            {% endfor %}
+        
+        </table>
+        
+    
+        
+</body>
+</html>

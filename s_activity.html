@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Activity</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+    <link rel="stylesheet" type="text/css" href="/static/login.css">
+</head>
+<body class="site-header clearfix">
+       
+                <nav>
+                 <div class="logo">
+                  <h1>Parentor</h1>
+                 </div>
+                 <div class="menu"> 
+                  <ul>
+                       <li><a href="/logout">Logout</a></li>
+                  </ul>
+                 </div>
+                </nav>
+    <div class="form">
+    <center><h3><b>ADD ACTIVITY</b></h3></center>
+    {% with messages = get_flashed_messages(with_categories=true) %}  
+        {% if messages %}  
+            {% for category, message in messages %}  
+            <p class="alert alert-{{ category }}">{{ message }}</p>  
+            {% endfor %}  
+        {% endif %}  
+    {% endwith %}  
+
+    <form method="POST" action="">
+        <input type="number" name="reg_id" value="{{sid}}" readonly><br>
+        <label for="sel5">Activity Name </label>
+        <select class="form-control" name="a_id" id="sel5">
+        {% for x in activities %}
+            <option value="{{x.a_id}}">{{x.a_name}}</option>
+        {% endfor %}
+        </select><br>
+        <label>Position/Participated </label>
+        <input type="text" name="position"  required><br>
+
+
+        
+        <input type="submit" value="Submit" style="background-color:dodgerblue;width: 100%;">
+    </form>
+    </div>
+   
+</body>
+</html>
